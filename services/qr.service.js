@@ -23,9 +23,11 @@ export const _create = async (req) => {
   }
 };
 
-export const _findAll = async () => {
+export const _findAll = async (req) => {
   try {
-    const qrs = await QrModel.find();
+    const user = req.user;
+    console.log(user);
+    const qrs = await QrModel.find({ created_by: user.id }).sort({ _id: -1 });
 
     return qrs;
   } catch (error) {
