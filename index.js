@@ -24,3 +24,5 @@ mongoose.connect(config.MONGO_URL).then(() => {
     console.log(`Server running at port - ${config.PORT}`);
   });
 });
+
+export default app;
