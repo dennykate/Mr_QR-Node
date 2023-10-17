@@ -20,8 +20,8 @@ export default async (svg) => {
   const storageRef = ref(storage, uuidv4() + ".jpg");
 
   return await uploadBytes(storageRef, pngBuffer, {
-    // contentType: "application/octet-stream",
-    contentType: "image/jpeg",
+    contentType: "application/octet-stream",
+    // contentType: "image/jpeg",
   }).then((snapshot) => {
     return getDownloadURL(snapshot.ref).then((url) => {
       return url;

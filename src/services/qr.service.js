@@ -1,3 +1,5 @@
+import * as R from "ramda";
+
 import uploadImage from "../lib/uploadImage.js";
 import QrModel from "../models/qr.model.js";
 
@@ -26,10 +28,23 @@ export const _create = async (req) => {
 export const _findAll = async (req) => {
   try {
     const user = req.user;
-    console.log(user);
-    const qrs = await QrModel.find({ created_by: user.id }).sort({ _id: -1 });
 
-    return qrs;
+    const query = req.query;
+    const page = parseInt(query.page) || 1;
+    const limit = 12;
+    const skip = (page - 1) * limit;
+
+    const total = await QrModel.countDocuments({ created_by: user.id });
+    let qrs = await QrModel.find({ created_by: user.id })
+      .sort({ _id: -1 })
+      .skip(skip)
+      .limit(limit);
+
+    qrs = qrs.map((qr) => {
+      return R.omit([], qr);
+    });
+
+    return { data: qrs, total };
   } catch (error) {
     throw error;
   }

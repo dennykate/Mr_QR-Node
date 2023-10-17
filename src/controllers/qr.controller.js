@@ -17,14 +17,9 @@ export const create = async (req, res, next) => {
 export const findAll = async (req, res, next) => {
   try {
     const qrs = await _findAll(req);
-    const response_qrs = qrs.map((qr) => {
-      return qr;
-    });
 
-    return success(res, { data: response_qrs }, 201);
+    return success(res, qrs, 201);
   } catch (e) {
-    console.log(e);
-    console.log(e);
     return error(res, { message: "Fail to process" });
   }
 };

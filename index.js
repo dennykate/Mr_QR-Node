@@ -1,13 +1,10 @@
 import express from "express";
 import bodyParser from "body-parser";
-import dotenv from "dotenv";
 import cors from "cors";
 import mongoose from "mongoose";
 
-import config from "./constants/config.js";
-import routes from "./routes/index.js";
-
-dotenv.config();
+import config from "./src/constants/config.js";
+import routes from "./src/routes/index.js";
 
 const app = express();
 
