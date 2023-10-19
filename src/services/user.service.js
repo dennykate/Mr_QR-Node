@@ -109,7 +109,7 @@ export const _googleAuth = async (req) => {
     }
   } catch (error) {
     console.log(error);
-    throw "Unknown error occur";
+    throw "Unknown Error Found";
   }
 };
 
@@ -155,7 +155,7 @@ export const _emailVerify = async (req) => {
     return { message: "User has been verified successfully" };
   } catch (error) {
     console.log(error);
-    throw "Unknown Error Occur";
+    throw "Unknown Error Found";
   }
 };
 
@@ -170,6 +170,6 @@ export const _phoneVerify = async (req) => {
     return { message: "User has been verified successfully" };
   } catch (error) {
     console.log(error);
-    throw "Unknown Error Occur";
+    throw "Unknown Error Found";
   }
 };
