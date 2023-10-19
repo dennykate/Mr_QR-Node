@@ -152,7 +152,7 @@ export const _emailVerify = async (req) => {
       verified_at: new Date(),
     });
 
-    return { message: "User has verified successfully" };
+    return { message: "User has been verified successfully" };
   } catch (error) {
     console.log(error);
     throw "Unknown Error Occur";
@@ -167,7 +167,7 @@ export const _phoneVerify = async (req) => {
       verified_at: new Date(),
     });
 
-    return { message: "User has verified successfully" };
+    return { message: "User has been verified successfully" };
   } catch (error) {
     console.log(error);
     throw "Unknown Error Occur";
